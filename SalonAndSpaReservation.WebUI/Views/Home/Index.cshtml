@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SalonAndSpaReservation.Domain.Entities.Service>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+<div>
+    <div>
+        <div class="hero-Image">
+            <img src="~/Content/Images/giorgio-resized.jpg" />
+            <div class="hero-text">
+                <h1 style="font-size:50px">Great Hair Doesn't Happen By Chance, It Happens By Appointment</h1>
+                <a href="@Url.Action("Index", "Home")" class="btn button">Book Appointment</a>
+            </div>
+        </div>
+    </div>
+
+    <h1>SERVICES</h1>
+
+    <div class="row">
+        @foreach (var service in Model)
+         {
+        <div class="col-sm-3 product">
+            <div class="thumbnail pbc">
+                <div>
+                    <div class="product_info">
+                        <h4>@service.Name</h4>
+                        <h6>@service.Description</h6>
+                        <p>@service.Price</p>
+                    </div>
+                    <a href="@Url.Action("BookAppointment", "Home",new {area="", id=service.ID})" class="button">Book Now</a>
+                    
+                </div>
+            </div>
+        </div>
+         }
+    </div>
+</div>
+
+
+
+
+

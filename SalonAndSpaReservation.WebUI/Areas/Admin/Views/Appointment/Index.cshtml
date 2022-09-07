@@ -1,0 +1,38 @@
+﻿@model IEnumerable < SalonAndSpaReservation.Domain.Entities.Appointment>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="text-center">Appointments</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered table-hover">
+            <tr>
+                <th class="text-right">ID</th>
+                <th>ServiceID</th>
+                <th> Price</th>
+                <th class="text-right">Date</th>
+                <th class="text-center">Time</th>
+                <th class="text-center">NumberOfGuest</th>
+            </tr>
+            @{int c = 0;}
+            @foreach (var item in Model)
+            {
+                c++;
+                <tr>
+                    <td class="text-right">@c</td>
+                    <td>@item.ServiceID</td>
+                    <td class="text-right">@item.ServicePrice.ToString("c")</td>
+                    <td>@item.Date</td>
+                    <td>@item.Time</td>
+                    <td>@item.NumberOfGuest</td>
+                   
+                </tr>
+             }
+        </table>
+    </div>
+   
+</div>

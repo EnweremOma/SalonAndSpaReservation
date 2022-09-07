@@ -1,0 +1,57 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/ErrorStyles.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <title></title>
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand{-sm|-md|-lg|-xl} header">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="@Url.Action("Index", "Home", new {area=""})">Salon reservation</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="@Url.Action("Index","Admin", new { @area = "Admin" })" class="btn btn-xs">Materials</a></li>
+                        <li><a href="@Url.Action("Index","Service", new { @area = "Admin" })" class="btn btn-xs">Services</a></li>
+                        <li><a href="@Url.Action("Index","Appointment", new { @area = "Admin" })" class="btn btn-xs">Appointments</a></li>
+                    </ul>
+
+                    <div class="navbar-right">
+                        @Html.Partial("_LoginPartial")
+
+                    </div>
+                    <form class="form-inline my-2 my-lg-0 navbar-right">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0 glyphicon glyphicon-search" style="background-color:dodgerblue" type="submit"></button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        
+
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success">@TempData["message"]</div>
+        }
+
+        <div class="main">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="flex-wrapper">
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Salon Resevation</p>
+        </footer>
+    </div>
+</body>
+</html>

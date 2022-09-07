@@ -1,0 +1,21 @@
+﻿@model SalonAndSpaReservation.WebUI.Models.AppointmentViewModel
+
+@{
+    ViewBag.Title = "ViewAppointment";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2 class="text-center"><strong>Thank you for booking a session with US! <br /> Below are the details of your appointment</strong></h2>
+<div class="viewappt text-center">
+    
+    <div>
+        <h3><strong>@Model.service.Name</strong></h3>
+
+        <h4>@Model.appointment.Date</h4>
+        <h4>@Model.appointment.Time</h4>
+        <h4>Duration: @Model.service.Duration</h4>
+        <p>Description: @Model.service.Description</p>
+
+    </div>
+    
+</div>

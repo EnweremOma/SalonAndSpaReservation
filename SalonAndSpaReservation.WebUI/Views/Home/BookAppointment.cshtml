@@ -1,0 +1,126 @@
+﻿@model SalonAndSpaReservation.Domain.Entities.Appointment
+
+@{
+    ViewBag.Title = "BookAppointment";
+    Layout = "~/Views/Shared/_BookingLayout.cshtml";
+   
+}
+
+<div class="container">
+    <a href="@Url.Action("Index","Home",new {area=""})" class="btn-danger" style="color:black"><h3>Back</h3></a>
+
+    @using (Html.BeginForm("BookAppointment", "Home", FormMethod.Post, new { @area = "", role = "form" }))
+    {
+        @Html.HiddenFor(model => model.ServiceID)
+
+        <div class="grid-container">
+            <div>
+                <h3>@ViewBag.service.Name</h3>
+                <div class="row">
+                    <p>Duration @ViewBag.service.Duration hrs</p>
+                    <p>Price #@ViewBag.service.Price</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <strong> First Name: </strong>
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", placeholder = "FirstName" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <strong> Last Name: </strong>
+                            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", placeholder = "LastName" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <strong> Phone Number: </strong>
+                            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", placeholder = "Phone Number" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <strong> Email: </strong>
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <strong> State: </strong>
+                            @Html.TextBoxFor(model => model.State, new { @class = "form-control", placeholder = "State" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <strong> City: </strong>
+                            @Html.TextBoxFor(model => model.City, new { @class = "form-control", placeholder = "City" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <strong> Zip Code: </strong>
+                            @Html.TextBoxFor(model => model.ZipCode, new { @class = "form-control", placeholder = "ZipCode" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <strong> Street Address: </strong>
+                            @Html.TextAreaFor(model => model.StreetAddress, new { @class = "form-control", placeholder = "Street Address" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <strong> Gender: </strong>
+                            @Html.TextBoxFor(model => model.Gender, new { @class = "form-control", placeholder = "Gender" })
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div>
+                <h4> Number Of Clients</h4>
+                <div class="editor-field">
+                    @Html.DropDownListFor(model => model.NumberOfGuest,
+                     new List<SelectListItem> { new SelectListItem{Value="1", Text="Just me"},
+                         new SelectListItem{Value="2", Text="Two People"},
+                         new SelectListItem{Value="3", Text="Three People"},
+                         new SelectListItem { Value = "4", Text = "Four People" },
+                         new SelectListItem{Value="5", Text="Five People"}
+                     }
+                   )
+                    @Html.ValidationMessageFor(model => model.NumberOfGuest)
+                </div>
+                <div>
+                    <h3> Date</h3>
+                </div>
+                <div class="form-group">
+                    <h4>Please add a date for your appointment</h4>
+                    @Html.TextBoxFor(model => model.Date, new { @class = "form-control", placeholder = "Add a date" })
+                </div>
+                <input type="submit" value="Continue" style="color:black" class="button" />
+            </div>
+
+        </div>
+
+     }
+</div>
+

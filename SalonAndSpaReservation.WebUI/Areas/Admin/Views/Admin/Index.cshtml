@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SalonAndSpaReservation.Domain.Entities.Material>
+
+@{
+    ViewBag.Title = "Admin: All Materials";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="text-center">Materials</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered table-hover">
+            <tr>
+                <th class="text-right">ID</th>
+                <th>Name</th>
+                <th class="text-right">Price</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            @{int c = 0;}
+            @foreach (var item in Model)
+            {
+                c++;
+                <tr>
+                    <td class="text-right">@c</td>
+                    <td>@Html.ActionLink(item.Name, "Edit", new { item.ID })</td>
+                    <td class="text-right">@item.Price.ToString("c")</td>
+                    <td class="text-center">
+                        <a href="@Url.Action("Delete","Admin", new { @area = "Admin",id=item.ID })" class="btn btn-danger btn-xs">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="panel-footer">
+        <a href="@Url.Action("Add", "Admin", new { @area = "Admin" })" class="btn btn-success">Add a new material</a>
+    </div>
+</div>

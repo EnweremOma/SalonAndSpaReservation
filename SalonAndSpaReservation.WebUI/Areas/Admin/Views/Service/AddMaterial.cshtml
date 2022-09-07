@@ -1,0 +1,23 @@
+﻿@model SalonAndSpaReservation.Domain.Entities.MaterialToService
+
+@{
+    ViewBag.Title = "AddMaterial";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h1>Add new Material</h1>
+
+    @using (Html.BeginForm("AddMaterial", "Service", FormMethod.Post, new { @area = "Admin", role = "form" }))
+    {
+        @Html.HiddenFor(model => model.ServiceID)
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.MaterialID, (List<SelectListItem>)ViewBag.
+           materialList, "Select")
+            @Html.ValidationMessageFor(model => model.MaterialID)
+        </div>
+
+        <input type="submit" value="Save" class="bg-info" />
+    }
+    @Html.ActionLink("Cancel and return to List", "Index")
+</div>
